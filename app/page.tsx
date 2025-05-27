@@ -4,7 +4,9 @@ import { CourseHighlights } from "@/components/course-highlights";
 import { Testimonials } from "@/components/testimonials";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { Button } from "@/components/ui/button";
+import RegistrationForm from "./registration-form";
 import { ChevronRight, Calendar, Users, Clock, Award } from "lucide-react";
+import HubspotForm from '../formulario'
 
 export default function Home() {
   return (
@@ -17,27 +19,12 @@ export default function Home() {
               Aprender Design
             </span>
           </Link>
-          <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/courses"
-              className="text-neutral-600 hover:text-neutral-900 transition-colors"
-            >
-              Courses
-            </Link>
-            <span className="text-neutral-400">&gt;</span>
-            <span className="text-neutral-900 font-medium">Ventas con IA</span>
-          </div>
           <div className="flex items-center space-x-4">
-            <Link
-              href="/login"
-              className="text-neutral-900 hover:text-neutral-700 font-medium hidden md:flex items-center group"
-            >
-              Login
-              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Button className="bg-black text-white hover:bg-neutral-800 transition-all duration-300">
-              Inscribirme ahora
-            </Button>
+            <a href="#form">
+              <Button className="bg-black text-white hover:bg-neutral-800 transition-all duration-300">
+                Inscribirme ahora
+              </Button>
+            </a>
           </div>
         </div>
       </header>
@@ -64,9 +51,11 @@ export default function Home() {
                   industriales.
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 animate-in slide-in-from-left duration-700 delay-300">
-                  <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 rounded-xl text-lg shadow-xl shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300">
-                    Inscribirme ahora
-                  </Button>
+                  <a href="#form">
+                    <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 rounded-xl text-lg shadow-xl shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300">
+                      Inscribirme ahora
+                    </Button>
+                  </a>
                   <Button
                     variant="outline"
                     className="border-neutral-300 hover:border-neutral-400 px-8 py-6 rounded-xl text-lg"
@@ -136,7 +125,8 @@ export default function Home() {
                 Lo que aprenderás
               </h2>
               <p className="text-lg text-neutral-600">
-                Domina habilidades clave para integrar la IA como tu aliada estratégica en ventas técnicas B2B
+                Domina habilidades clave para integrar la IA como tu aliada
+                estratégica en ventas técnicas B2B
               </p>
             </div>
 
@@ -166,7 +156,8 @@ export default function Home() {
                 Lo que dicen nuestros participantes
               </h2>
               <p className="text-lg text-neutral-400">
-                Historias de profesionales que optimizaron sus procesos comerciales con IA
+                Historias de profesionales que optimizaron sus procesos
+                comerciales con IA
               </p>
             </div>
 
@@ -186,12 +177,15 @@ export default function Home() {
                     ¿Listo para transformar tu proceso comercial?
                   </h2>
                   <p className="text-lg text-neutral-600 mb-8">
-                    Únete a la comunidad de profesionales que están impulsando sus ventas con la ayuda de la IA.
+                    Únete a la comunidad de profesionales que están impulsando
+                    sus ventas con la ayuda de la IA.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 lg:block">
-                    <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 rounded-xl text-lg shadow-xl shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300 lg:mb-[1rem]">
-                      Inscribirme ahora
-                    </Button>
+                    <a href="#form">
+                      <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 rounded-xl text-lg shadow-xl shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300 lg:mb-[1rem]">
+                        Inscribirme ahora
+                      </Button>
+                    </a>
                     <Button
                       variant="outline"
                       className="border-neutral-300 hover:border-neutral-400 px-8 py-6 rounded-xl text-lg"
@@ -201,7 +195,9 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="bg-gradient-to-br from-red-500 to-amber-600 p-8 md:p-12 flex flex-col justify-center text-white">
-                  <h3 className="text-2xl font-bold mb-6">Detalles del Curso:</h3>
+                  <h3 className="text-2xl font-bold mb-6">
+                    Detalles del Curso:
+                  </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
                       <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center mr-3 mt-1">
@@ -221,7 +217,9 @@ export default function Home() {
                         <span className="text-sm font-bold">2</span>
                       </div>
                       <div>
-                        <h4 className="font-medium">Retroalimentación personalizada</h4>
+                        <h4 className="font-medium">
+                          Retroalimentación personalizada
+                        </h4>
                         <p className="text-white/80">
                           Guía directa de expertos en IA y ventas
                         </p>
@@ -243,6 +241,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section id="form">
+          <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+            <RegistrationForm />
+          </div>
+        </section>
       </main>
 
       <footer className="bg-neutral-900 text-white py-16">
@@ -256,7 +259,8 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-neutral-400 mb-6">
-                Potenciamos a los equipos comerciales con herramientas de IA para destacar en la nueva era empresarial.
+                Potenciamos a los equipos comerciales con herramientas de IA
+                para destacar en la nueva era empresarial.
               </p>
               <div className="flex space-x-4">
                 <a
@@ -400,7 +404,8 @@ export default function Home() {
           </div>
           <div className="border-t border-neutral-800 mt-12 pt-8 text-center text-neutral-500">
             <p>
-              © {new Date().getFullYear()} Aprender IA. Todos los derechos reservados.
+              © {new Date().getFullYear()} Aprender IA. Todos los derechos
+              reservados.
             </p>
           </div>
         </div>
