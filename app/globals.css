@@ -177,3 +177,6 @@ html {
   scroll-behavior: smooth;
 }
 
+.hsfc-Button{
+  width: 100% !important;
+}

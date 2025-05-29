@@ -21,14 +21,7 @@ export default function RegistrationForm() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-[10rem] items-center min-h-screen">
           {/* Left Side - Form */}
-          <div className="flex justify-center lg:justify-start">
-            <Card className="w-full max-w-[34rem] bg-white shadow-2xl">
-              <HubspotForm />
-            </Card>
-          </div>
-
-          {/* Right Side - Animation */}
-          <div className="hidden lg:flex justify-center items-center relative">
+         <div className="hidden lg:flex justify-center items-center relative">
             <div className="relative w-96 h-96">
               {/* Animated Background Circles */}
               <div className="absolute inset-0 animate-spin-slow">
@@ -56,6 +49,14 @@ export default function RegistrationForm() {
               <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-orange-300 to-red-300 transform rotate-12 animate-wiggle"></div>
             </div>
           </div>
+
+          {/* Right Side - Animation */}
+           <div className="flex justify-center lg:justify-start">
+            <Card className="w-full max-w-[34rem] bg-white shadow-2xl">
+              <HubspotForm />
+            </Card>
+          </div>
+          
         </div>
       </div>
     </section>

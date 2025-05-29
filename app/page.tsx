@@ -6,7 +6,7 @@ import { InstructorProfile } from "@/components/instructor-profile";
 import { Button } from "@/components/ui/button";
 import RegistrationForm from "./registration-form";
 import { ChevronRight, Calendar, Users, Clock, Award } from "lucide-react";
-import HubspotForm from '../formulario'
+import HubspotForm from "../formulario";
 
 export default function Home() {
   return (
@@ -14,9 +14,8 @@ export default function Home() {
       <header className="border-b border-neutral-100 sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 group-hover:shadow-lg group-hover:shadow-red-500/20 transition-all duration-300"></div>
             <span className="font-semibold text-lg tracking-tight">
-              Aprender Design
+              <img src="/logo-esedor.png" />
             </span>
           </Link>
           <div className="flex items-center space-x-4">
