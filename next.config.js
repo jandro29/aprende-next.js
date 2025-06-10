@@ -1,7 +1,10 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Esto es lo nuevo que reemplaza a `next export`
+  //output: 'export', // Esto es lo nuevo que reemplaza a `next export`
+
+  output: 'standalone',
+  
   eslint: {
     ignoreDuringBuilds: true,
   },
