@@ -17,10 +17,10 @@ import { getFiveInfo } from "@/lib/get-five-info";
 
 export const Hero = async()=> { 
  const data = await getHomeInfo();
- const data2 = await getSecondInfo()
- const data3 = await getThirdInfo()
- const data4 = await getFourthInfo()
- const data5 = await getFiveInfo()
+ const data2 = await getSecondInfo();
+ const data3 = await getThirdInfo();
+ const data4 = await getFourthInfo();
+ const data5 = await getFiveInfo();
 
 if (!data) {
   return <p>Error al cargar la información</p>;
