@@ -8,39 +8,61 @@ import RegistrationForm from "../app/registration-form";
 import { ChevronRight, Calendar, Users, Clock, Award } from "lucide-react";
 import HubspotForm from "../formulario";
 import { getHomeInfo } from "@/lib/get-home-info";
+import { getSecondInfo } from "@/lib/get-second-info";
+import { getThirdInfo } from "@/lib/get-third-info";
+import { getFourthInfo } from "@/lib/get-fourth-info";
+import { getFiveInfo } from "@/lib/get-five-info";
 
 
 
 export const Hero = async()=> { 
-   /*const homeInfo = await getHomeInfo();
+ const data = await getHomeInfo();
+ const data2 = await getSecondInfo()
+ const data3 = await getThirdInfo()
+ const data4 = await getFourthInfo()
+ const data5 = await getFiveInfo()
 
-  console.log("homeInfo:", homeInfo); // <-- Mira esto en el terminal o consola del servidor
+if (!data) {
+  return <p>Error al cargar la información</p>;
+}
+const {
+  cuposlimutados,
+  firstTitle,
+  firstTitle2,
+  contentFirstSection,
+  Duration,
+  CuposLimitados,
+  Inicio,
+  certificado,
+} = data;
 
-  if (!homeInfo) {
-    return <div>Error al cargar la información</div>;
-  }
+const {
+  title,
+  contenido, 
+} = data2;
 
-  const {
-    cupos,
-    partOneTitle,
-    partTwoTitle,
-    contentFirstSection,
-    duration,
-    cuposLimitados,
-    inicio,
-    certificado,
-  } = homeInfo;
-   
-*/
+const {
+  titleThird,
+  contentThird, 
+} = data3;
 
-    const cupos = 'Cupos limitados'
-    const partOneTitle = 'Ventas Técnicas'
-    const partTwoTitle = 'con IA'
-    const contentFirstSection = 'Domina herramientas de IA generativa como ChatGPT, Gemini y NotebookLM para convertirte en un referente en ventas B2B. Aprende con expertos en inteligencia artificial y ventas industriales.'
-    const duration = '1 hora'
-    const cuposLimitados = 'Cupos limitados'
-    const inicio = '20 de agosto de 2025'
-    const certificado = 'Incluido'
+const {
+  fourthTitle,
+  fourthText, 
+} = data4;
+
+const {
+  titleFive,
+  contentFive,
+  titlePart2,
+  detalle1,
+  detalle2,
+  detalle3,
+  detalle1Content,
+  detalle2Content,
+} = data5;
+
+
 
     return (
     <div className="min-h-screen flex flex-col">
@@ -67,13 +89,13 @@ export const Hero = async()=> {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1 relative z-10">
                 <div className="inline-block px-4 py-1 bg-red-50 text-red-600 rounded-full text-sm font-medium mb-6 animate-in slide-in-from-left duration-500">
-                  {cupos}
+                  {cuposlimutados}
                 </div>
                 <h1 className="text-5xl md:text-7xl xl:text-8xl font-bold tracking-tight mb-8 leading-[1.1] animate-in slide-in-from-left duration-700 delay-100">
-                  {partOneTitle}
+                  {firstTitle}
                   <br />
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-amber-600">
-                    {partTwoTitle}
+                    {firstTitle2}
                   </span>
                 </h1>
                 <p className="text-xl text-neutral-700 mb-8 max-w-lg animate-in slide-in-from-left duration-700 delay-200">
@@ -99,21 +121,21 @@ export const Hero = async()=> {
                       <Calendar className="h-4 w-4 mr-2" />
                       <span className="text-sm">Duración</span>
                     </div>
-                    <p className="font-medium"> {duration} </p>
+                    <p className="font-medium"> {Duration} </p>
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center text-neutral-500 mb-1">
                       <Users className="h-4 w-4 mr-2" />
                       <span className="text-sm">Inscripción</span>
                     </div>
-                    <p className="font-medium"> {cuposLimitados} </p>
+                    <p className="font-medium"> {CuposLimitados} </p>
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center text-neutral-500 mb-1">
                       <Clock className="h-4 w-4 mr-2" />
                       <span className="text-sm">Inicio</span>
                     </div>
-                    <p className="font-medium"> {inicio} </p>
+                    <p className="font-medium"> {Inicio} </p>
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center text-neutral-500 mb-1">
@@ -151,11 +173,10 @@ export const Hero = async()=> {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Lo que aprenderás
+                {title}
               </h2>
               <p className="text-lg text-neutral-600">
-                Domina habilidades clave para integrar la IA como tu aliada
-                estratégica en ventas técnicas B2B
+                {contenido}
               </p>
             </div>
 
@@ -167,10 +188,10 @@ export const Hero = async()=> {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Conoce a tu instructor
+                {titleThird}
               </h2>
               <p className="text-lg text-neutral-600">
-                Aprende con líderes en ventas, IA y formación empresarial
+                {contentThird}
               </p>
             </div>
 
@@ -182,11 +203,10 @@ export const Hero = async()=> {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Lo que dicen nuestros participantes
+                {fourthTitle}
               </h2>
               <p className="text-lg text-neutral-400">
-                Historias de profesionales que optimizaron sus procesos
-                comerciales con IA
+                {fourthText}
               </p>
             </div>
 
@@ -194,20 +214,16 @@ export const Hero = async()=> {
           </div>
         </section>
 
-        <section className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <GeometricPattern />
-          </div>
+        <section className="py-24 relative overflow-hidden">  
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <h2 className="text-3xl font-bold mb-6">
-                    ¿Listo para transformar tu proceso comercial?
+                    {titleFive}
                   </h2>
                   <p className="text-lg text-neutral-600 mb-8">
-                    Únete a la comunidad de profesionales que están impulsando
-                    sus ventas con la ayuda de la IA.
+                    {contentFive}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 lg:block">
                     <a href="#form">
@@ -225,7 +241,7 @@ export const Hero = async()=> {
                 </div>
                 <div className="bg-gradient-to-br from-red-500 to-amber-600 p-8 md:p-12 flex flex-col justify-center text-white">
                   <h3 className="text-2xl font-bold mb-6">
-                    Detalles del Curso:
+                    {titlePart2}
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
@@ -234,10 +250,10 @@ export const Hero = async()=> {
                       </div>
                       <div>
                         <h4 className="font-medium">
-                          5 semanas de aprendizaje intensivo
+                          {detalle1}
                         </h4>
                         <p className="text-white/80">
-                          10 sesiones en vivo con proyectos prácticos
+                          {detalle1Content}
                         </p>
                       </div>
                     </li>
@@ -247,10 +263,10 @@ export const Hero = async()=> {
                       </div>
                       <div>
                         <h4 className="font-medium">
-                          Retroalimentación personalizada
+                          {detalle2}
                         </h4>
                         <p className="text-white/80">
-                          Guía directa de expertos en IA y ventas
+                          {detalle2Content}
                         </p>
                       </div>
                     </li>
@@ -260,7 +276,7 @@ export const Hero = async()=> {
                       </div>
                       <div>
                         <p className="text-white/80">
-                          Acceso a comunidad de profesionales comerciales con IA
+                          {detalle3}
                         </p>
                       </div>
                     </li>

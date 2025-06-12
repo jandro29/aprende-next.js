@@ -1,6 +1,6 @@
-export async function getHomeInfo() {
+export async function getThirdInfo() {
   try {
-    const res = await fetch("http://localhost:1337/api/home");
+    const res = await fetch("http://localhost:1337/api/third-section");
 
     if (!res.ok) {
       console.error("Error en el fetch:", res.status);

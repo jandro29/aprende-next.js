@@ -1,56 +1,84 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
-
-const testimonials = [
-  {
-    name: "María Gómez",
-    role: "Gerente de Ventas Industriales",
-    quote:
-      "Aplicar IA en mis propuestas me ayudó a reducir los tiempos de respuesta y cerrar ventas más rápido. Este curso fue un antes y un después.",
-    avatar: "/placeholder.svg?key=6ym8o",
-  },
-  {
-    name: "Luis Herrera",
-    role: "Consultor Técnico B2B",
-    quote:
-      "Al inicio dudaba del impacto real de la IA, pero ahora es parte clave de mis reuniones y propuestas. Ya no trabajo sin ella.",
-    avatar: "/placeholder.svg?key=6ym8o",
-  },
-  {
-    name: "Valeria Paredes",
-    role: "Ejecutiva Comercial",
-    quote:
-      "La IA me ayudó a generar contenido técnico que antes me tomaba horas. Ahora lo hago en minutos con calidad profesional.",
-    avatar: "/placeholder.svg?key=6ym8o",
-  },
-]
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { getFourthInfo } from "@/lib/get-fourth-info";
 
 export function Testimonials() {
-  const [current, setCurrent] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
+  const [current, setCurrent] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const [testimonials, setTestimonials] = useState([
+    {
+      name: "",
+      role: "",
+      quote: "",
+      avatar: "/placeholder.svg",
+    },
+  ]);
 
   useEffect(() => {
-    if (!autoplay) return
+    async function fetchData() {
+      const data4 = await getFourthInfo();
+
+      const {
+        comentario1,
+        comentario2,
+        comentario3,
+        nombre1,
+        nombre2,
+        nombre3,
+        profesion1,
+        profesion2,
+        profesion3,
+      } = data4;
+
+      const newTestimonials = [
+        {
+          name: nombre1,
+          role: profesion1,
+          quote: comentario1,
+          avatar: "/placeholder.svg",
+        },
+        {
+          name: nombre2,
+          role: profesion2,
+          quote: comentario2,
+          avatar: "/placeholder.svg",
+        },
+        {
+          name: nombre3,
+          role: profesion3,
+          quote: comentario3,
+          avatar: "/placeholder.svg",
+        },
+      ];
+
+      setTestimonials(newTestimonials);
+    }
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!autoplay) return;
 
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [autoplay])
+    return () => clearInterval(interval);
+  }, [autoplay, testimonials.length]);
 
   const next = () => {
-    setAutoplay(false)
-    setCurrent((prev) => (prev + 1) % testimonials.length)
-  }
+    setAutoplay(false);
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  };
 
   const prev = () => {
-    setAutoplay(false)
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    setAutoplay(false);
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div className="relative max-w-4xl mx-auto">
@@ -79,17 +107,17 @@ export function Testimonials() {
                 <Quote className="h-12 w-12" />
               </div>
               <blockquote className="text-2xl md:text-3xl font-light mb-8 leading-relaxed">
-                "{testimonials[current].quote}"
+                "{testimonials[current]?.quote}"
               </blockquote>
               <div className="flex items-center">
                 <img
-                  src={testimonials[current].avatar || "/placeholder.svg"}
-                  alt={testimonials[current].name}
+                  src={testimonials[current]?.avatar || "/placeholder.svg"}
+                  alt={testimonials[current]?.name}
                   className="h-16 w-16 rounded-full object-cover mr-4"
                 />
                 <div>
-                  <div className="font-bold text-lg">{testimonials[current].name}</div>
-                  <div className="text-neutral-400">{testimonials[current].role}</div>
+                  <div className="font-bold text-lg">{testimonials[current]?.name}</div>
+                  <div className="text-neutral-400">{testimonials[current]?.role}</div>
                 </div>
               </div>
             </motion.div>
@@ -112,8 +140,8 @@ export function Testimonials() {
           <button
             key={index}
             onClick={() => {
-              setAutoplay(false)
-              setCurrent(index)
+              setAutoplay(false);
+              setCurrent(index);
             }}
             className={`h-2 rounded-full transition-all duration-300 ${
               current === index ? "w-8 bg-red-500" : "w-2 bg-white/20"
@@ -123,5 +151,5 @@ export function Testimonials() {
         ))}
       </div>
     </div>
-  )
+  );
 }

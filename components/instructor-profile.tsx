@@ -1,8 +1,31 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react"
+import { getThirdInfo } from "@/lib/get-third-info"
+import { motion } from "framer-motion"
 
 export function InstructorProfile() {
+  const [data, setData] = useState({
+    docente: "",
+    nombreDocente: "",
+    conocimiento1: "",
+    conocimiento2: "",
+    conocimiento3: "",
+    contenidoMaestro: "",
+    logro1: "",
+    logro2: "",
+    logro3: "",
+  })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const info = await getThirdInfo()
+      setData(info)
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <motion.div
@@ -45,99 +68,48 @@ export function InstructorProfile() {
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-sm font-medium text-red-500 mb-2">
-          DOCENTE PRINCIPAL
-        </h3>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Mijalys Silva</h2>
+        <h3 className="text-sm font-medium text-red-500 mb-2">{data.docente}</h3>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">{data.nombreDocente}</h2>
+
         <div className="lg:flex items-center lg:space-x-4 mb-6 block">
           <div className="px-3 py-1 bg-neutral-100 rounded-full text-sm lg:mb-[0px] mb-[1rem]">
-            Consultor Comercial
+            {data.conocimiento1}
           </div>
           <div className="px-3 py-1 bg-neutral-100 rounded-full text-sm lg:mb-[0px] mb-[1rem]">
-            Especialista en IA
+            {data.conocimiento2}
           </div>
           <div className="px-3 py-1 bg-neutral-100 rounded-full text-sm">
-            Diseñador de Experiencias de Aprendizaje
+            {data.conocimiento3}
           </div>
         </div>
 
         <p className="text-lg text-neutral-600 mb-6">
-          Más de 10 años trabajando con marcas líderes en Latinoamérica como
-          Primax, Ripley, Niubiz y Redeban. Seleccionado por Google for
-          Startups, combina la experiencia en ventas, branding, IA y UX para
-          crear experiencias de aprendizaje efectivas.
+          {data.contenidoMaestro}
         </p>
 
         <div className="space-y-4 mb-8">
-          <div className="flex items-start">
-            <div className="h-6 w-6 rounded-full bg-red-100 text-red-500 flex items-center justify-center mr-3 mt-1">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+          {[data.logro1, data.logro2, data.logro3].map((logro, i) => (
+            <div className="flex items-start" key={i}>
+              <div className="h-6 w-6 rounded-full bg-red-100 text-red-500 flex items-center justify-center mr-3 mt-1">
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-medium">{logro}</h4>
+              </div>
             </div>
-            <div>
-              <h4 className="font-medium">Fundador de Esedor y docente en Toulouse-Lautrec</h4>
-             
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="h-6 w-6 rounded-full bg-red-100 text-red-500 flex items-center justify-center mr-3 mt-1">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4 className="font-medium">
-                Experto en formación de adultos y equipos corporativos
-              </h4>
-             
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="h-6 w-6 rounded-full bg-red-100 text-red-500 flex items-center justify-center mr-3 mt-1">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4 className="font-medium">
-                Diseñador de programas educativos centrados en resultados comerciales
-              </h4>
-              
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="flex space-x-4">
@@ -160,9 +132,8 @@ export function InstructorProfile() {
               />
             </svg>
           </a>
-         
         </div>
       </motion.div>
     </div>
-  );
+  )
 }
