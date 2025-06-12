@@ -1,6 +1,6 @@
 export async function getThirdInfo() {
   try {
-    const res = await fetch("http://localhost:1337/api/third-section");
+    const res = await fetch("https://backend-aprende.onrender.com/api/third-section");
 
     if (!res.ok) {
       console.error("Error en el fetch:", res.status);

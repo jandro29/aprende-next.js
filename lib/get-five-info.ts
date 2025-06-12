@@ -1,6 +1,6 @@
 export async function getFiveInfo() {
   try {
-    const res = await fetch("http://localhost:1337/api/five-section");
+    const res = await fetch("https://backend-aprende.onrender.com/api/five-section");
 
     if (!res.ok) {
       console.error("Error en el fetch:", res.status);

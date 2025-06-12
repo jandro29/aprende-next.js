@@ -1,6 +1,6 @@
 export async function getHomeInfo() {
   try {
-    const res = await fetch("http://localhost:1337/api/home");
+    const res = await fetch("https://backend-aprende.onrender.com/api/home");
 
     if (!res.ok) {
       console.error("Error en el fetch:", res.status);
