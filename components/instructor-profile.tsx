@@ -1,30 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { getThirdInfo } from "@/lib/get-third-info"
 import { motion } from "framer-motion"
 
 export function InstructorProfile() {
-  const [data, setData] = useState({
-    docente: "",
-    nombreDocente: "",
-    conocimiento1: "",
-    conocimiento2: "",
-    conocimiento3: "",
-    contenidoMaestro: "",
-    logro1: "",
-    logro2: "",
-    logro3: "",
-  })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const info = await getThirdInfo()
-      setData(info)
-    }
-
-    fetchData()
-  }, [])
+  const data = {
+    docente: "DOCENTE PRINCIPAL",
+    nombreDocente: "Mijalys Silva",
+    conocimiento1: "Consultor Comercial",
+    conocimiento2: "Especialista en IA",
+    conocimiento3: "Diseñador de Experiencias de Aprendizaje",
+    contenidoMaestro:
+      "Más de 10 años trabajando con marcas líderes en Latinoamérica como Primax, Ripley, Niubiz y Redeban. Seleccionado por Google for Startups, combina la experiencia en ventas, branding, IA y UX para crear experiencias de aprendizaje efectivas.",
+    logro1: "Fundador de Esedor y docente en Toulouse-Lautrec",
+    logro2: "Experto en formación de adultos y equipos corporativos",
+    logro3: "Diseñador de programas educativos centrados en resultados comerciales",
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -56,8 +46,7 @@ export function InstructorProfile() {
             ))}
           </div>
           <p className="text-neutral-600 text-sm">
-            "An exceptional instructor who brings complex AI concepts down to
-            earth for designers."
+            "An exceptional instructor who brings complex AI concepts down to earth for designers."
           </p>
         </div>
       </motion.div>

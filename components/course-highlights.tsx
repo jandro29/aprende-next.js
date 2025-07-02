@@ -1,41 +1,57 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Code, Lightbulb, Palette, Shield, TrendingUp, Users } from "lucide-react"
-import { getSecondInfo } from "@/lib/get-second-info"
 
 const icons = [Lightbulb, Code, Palette, Shield, TrendingUp, Users]
 const colors = ["bg-amber-500", "bg-red-500", "bg-purple-500", "bg-emerald-500", "bg-blue-500", "bg-orange-500"]
 
+const highlightsData = [
+  {
+    title: "Fundamentos de IA",
+    description: "Comprende los conceptos clave de la IA generativa y su impacto en procesos comerciales.",
+    icon: Lightbulb,
+    color: "bg-amber-500",
+  },
+  {
+    title: "Prompt Engineering",
+    description: "Aprende a formular prompts que generen respuestas precisas, persuasivas y accionables.",
+    icon: Code,
+    color: "bg-red-500",
+  },
+  {
+    title: "Aplicaciones Comerciales",
+    description: "Descubre cómo usar IA para generar propuestas, gestionar leads y automatizar tareas repetitivas.",
+    icon: Palette,
+    color: "bg-purple-500",
+  },
+  {
+    title: "Ética y Privacidad",
+    description: "Navega los dilemas éticos del uso de IA en entornos de negocio.",
+    icon: Shield,
+    color: "bg-emerald-500",
+  },
+  {
+    title: "Tendencias Futuras",
+    description: "Anticípate a los cambios en el mercado con tecnologías emergentes.",
+    icon: TrendingUp,
+    color: "bg-blue-500",
+  },
+  {
+    title: "Proyectos Prácticos",
+    description: "Aplica lo aprendido en casos reales con feedback directo de expertos.",
+    icon: Users,
+    color: "bg-orange-500",
+  },
+]
+
 export function CourseHighlights() {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const section = await getSecondInfo()
-
-      const highlightsData = []
-      for (let i = 1; i <= 6; i++) {
-        highlightsData.push({
-          title: section[`titleCard${i}`],
-          description: section[`contenidoCard${i}`],
-          icon: icons[i - 1],
-          color: colors[i - 1],
-        })
-      }
-
-      setData(highlightsData)
-    }
-
-    fetchData()
-  }, [])
-
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {data.map((item, index) => {
+      {highlightsData.map((item, index) => {
         const IconComponent = item.icon
         return (
           <motion.div
