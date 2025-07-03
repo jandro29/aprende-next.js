@@ -32,7 +32,7 @@ export const Hero = () => {
 
       <main className="flex-1">
         <section className="relative overflow-hidden">
-          <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 lg:mt-[-4rem]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1 relative z-10">
                 <div className="inline-block px-4 py-1 bg-red-50 text-red-600 rounded-full text-sm font-medium mb-6 animate-in slide-in-from-left duration-500">
