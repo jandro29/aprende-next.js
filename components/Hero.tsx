@@ -160,12 +160,14 @@ export const Hero = () => {
                         Inscribirme ahora
                       </Button>
                     </a>
+                    <a href="/temario.pdf" download>
                     <Button
                       variant="outline"
                       className="border-neutral-300 hover:border-neutral-400 px-8 py-6 rounded-xl text-lg"
                     >
                       Descargar temario
                     </Button>
+                    </a>
                   </div>
                 </div>
                 <div className="bg-gradient-to-br from-red-500 to-amber-600 p-8 md:p-12 flex flex-col justify-center text-white">
