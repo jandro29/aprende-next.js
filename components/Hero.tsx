@@ -53,12 +53,7 @@ export const Hero = () => {
                       Inscribirme ahora
                     </Button>
                   </a>
-                  <Button
-                    variant="outline"
-                    className="border-neutral-300 hover:border-neutral-400 px-8 py-6 rounded-xl text-lg"
-                  >
-                    Conocer más
-                  </Button>
+                  
                 </div>
                 <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 animate-in slide-in-from-left duration-700 delay-400">
                   <div className="flex flex-col">
